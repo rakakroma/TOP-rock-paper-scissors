@@ -32,3 +32,23 @@ function playRound(playerSelection, computerSelection){
         "You Lose! Paper beats Rock": "You Win! Rock beats Scissors"; 
     }   
 }
+
+function game(){
+    let wins = 0;
+    let ties = 0;
+    let loses = 0;
+    let play;
+    for(i=0; i<5; i++){
+        play = playRound(prompt("Throw what?"),computerPlay());
+        console.log(play);
+        if(play.includes("Win")){
+            wins +=1;
+        }else if(play.includes("Lose")){
+            loses +=1;
+        }else{
+            ties +=1;
+        }
+    }
+    console.log(`wins:${wins} loses:${loses} ties:${ties}`);
+    return wins>loses? "You are the winner!": "Computer Wins"
+}
