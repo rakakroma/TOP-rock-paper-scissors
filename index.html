@@ -4,16 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
     <title>Document</title>
   </head>
   <body>
-    <div class="play">
-      <button id="paper">Paper</button>
-      <button id="scissors">Scissors</button>
-      <button id="rock">Rock</button>
+    <div class="play window" style="width: 300px">
+      <div class="title-bar">
+        <div class="title-bar-text">猜拳吧</div>
+      </div>
+      <div class="window-body">
+        <p>與電腦決鬥！你要出的是>>????</p>
+        <button id="paper">佈</button>
+        <button id="scissors">剪刀✁</button>
+        <button id="rock">石頭🪨</button>
+      </div>
+      <div class="status-bar">
+        <p class="playerHand status-bar-field"></p>
+        <p class="computerHand status-bar-field"></p>
+        <p id="result" class="status-bar-field"></p>
+      </div>
     </div>
-    <div id="result"></div>
 
+    <div class="play window" style="width: 300px">
+      <ul class="count">
+        <p>目前戰績</p>
+        <li>勝<span id="winCount">0</span></li>
+        <li>負 <span id="loseCount">0</span></li>
+        <li>平 <span id="drawCount">0</span></li>
+      </ul>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

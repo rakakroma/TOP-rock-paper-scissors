@@ -36,30 +36,47 @@ function playRound(playerSelection, computerSelection) {
 
 const buttons = document.querySelectorAll("button");
 const result = document.querySelector("#result")
+const drawCount = document.querySelector("#drawCount")
+const winCount = document.querySelector("#winCount")
+const loseCount = document.querySelector("#loseCount")
+let drawCountNumber = 0;
+let winCountNumber = 0;
+let loseCountNumber = 0;
+const condition = { scissors: "paper", rock: "scissors", paper: "rock" }
+const translation = { scissors: "剪刀", rock: "石頭", paper: "布" }
+const playerHand = document.querySelector(".playerHand")
+const computerHand = document.querySelector(".computerHand")
 
 buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const player = button.id;
-        console.log(player);
-        const computer = computerPlay();
-        console.log(computer);
-        if (player === computer) {
-            result.textContent = "Tie! No one win in this Round!"
-        }
-        if (player === "paper") {
-            result.textContent = computer === "scissors" ?
-                "You Lose! Scissors beats Paper" : "You Win! Paper beats Rock";
-        }
-        if (player === "scissors") {
-            result.textContent = computer === "rock" ?
-                "You Lose! Rock beats Scissors" : "You Win! Scissors beats Paper";
-        }
-        if (player === "rock") {
-            result.textContent = computer === "paper" ?
-                "You Lose! Paper beats Rock" : "You Win! Rock beats Scissors";
-        }
-    });
+    button.addEventListener("click", playGame)
 });
+
+function playGame() {
+    const player = this.id;
+    playerHand.innerHTML = `玩家：  ${translation[player]}！！! `
+    const computer = computerPlay();
+    computerHand.innerHTML = `電腦：  ${translation[computer]}！!！`
+    const draw = player === computer;
+    const win = condition[player] === computer;
+    const lose = player === condition[computer];
+    if (draw) {
+        result.textContent = "平手☺️";
+        drawCountNumber++;
+        drawCount.innerHTML = drawCountNumber;
+    }
+    if (win) {
+        result.textContent = "贏了🤩";
+        winCountNumber++;
+        winCount.innerHTML = winCountNumber;
+
+    }
+    if (lose) {
+        result.textContent = "輸了🥺";
+        loseCountNumber++;
+        loseCount.innerHTML = loseCountNumber;
+
+    }
+};
 // document.querySelector()
 
 // function game() {
