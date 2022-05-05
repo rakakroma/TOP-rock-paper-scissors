@@ -39,13 +39,18 @@ const result = document.querySelector("#result")
 const drawCount = document.querySelector("#drawCount")
 const winCount = document.querySelector("#winCount")
 const loseCount = document.querySelector("#loseCount")
-let drawCountNumber = 0;
-let winCountNumber = 0;
-let loseCountNumber = 0;
+let drawCountNumber = "";
+let winCountNumber = "";
+let loseCountNumber = "";
 const condition = { scissors: "paper", rock: "scissors", paper: "rock" }
 const translation = { scissors: "剪刀", rock: "石頭", paper: "布" }
 const playerHand = document.querySelector(".playerHand")
 const computerHand = document.querySelector(".computerHand")
+const victory = document.createElement("h3")
+victory.textContent = "電腦書ㄌ🥺🥺";
+const lose = document.createElement("h3")
+lose.textContent = "輸ㄌ了^^";
+const under = document.querySelector("#under");
 
 buttons.forEach((button) => {
     button.addEventListener("click", playGame)
@@ -60,23 +65,38 @@ function playGame() {
     const win = condition[player] === computer;
     const lose = player === condition[computer];
     if (draw) {
-        result.textContent = "平手☺️";
-        drawCountNumber++;
+        result.textContent = "平手ㄟ";
+        drawCountNumber += "🈚️";
         drawCount.innerHTML = drawCountNumber;
     }
     if (win) {
-        result.textContent = "贏了🤩";
-        winCountNumber++;
+        result.textContent = "好ㄛ👌";
+        winCountNumber += "🈹";
         winCount.innerHTML = winCountNumber;
 
     }
     if (lose) {
-        result.textContent = "輸了🥺";
-        loseCountNumber++;
+        result.textContent = "齁🐸";
+        loseCountNumber += "🈲";
         loseCount.innerHTML = loseCountNumber;
 
-    }
+    };
+    checkWin()
 };
+
+function checkWin() {
+    if (winCountNumber === "🈹🈹🈹🈹🈹") {
+        under.appendChild(victory);
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
+    } else if (loseCountNumber === "🈲🈲🈲🈲🈲") {
+        under.appendChild(lose);
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
+    }
+}
 // document.querySelector()
 
 // function game() {

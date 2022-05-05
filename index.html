@@ -10,7 +10,9 @@
   <body>
     <div class="play window" style="width: 300px">
       <div class="title-bar">
-        <div class="title-bar-text">猜拳吧</div>
+        <div class="title-bar-text">
+          <strong">✨猜拳五回合✨</strong>
+        </div>
       </div>
       <div class="window-body">
         <p>與電腦決鬥！你要出的是>>????</p>
@@ -25,12 +27,12 @@
       </div>
     </div>
 
-    <div class="play window" style="width: 300px">
+    <div id="under" class="play window" style="width: 300px">
       <ul class="count">
         <p>目前戰績</p>
-        <li>勝<span id="winCount">0</span></li>
-        <li>負 <span id="loseCount">0</span></li>
-        <li>平 <span id="drawCount">0</span></li>
+        <li>勝<span id="winCount"></span></li>
+        <li>負 <span id="loseCount"></span></li>
+        <li>平 <span id="drawCount"></span></li>
       </ul>
     </div>
     <script src="app.js"></script>
